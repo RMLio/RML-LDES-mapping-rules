@@ -1,0 +1,1100 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix gtfs: <http://vocab.gtfs.org/terms#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix ex: <http://example.com/> .
+@prefix rdfs: <https://www.w3.org/2000/01/rdf-schema#> .
+@prefix comp: <http://semweb.mmlab.be/ns/rml-compression#> .
+@prefix rmlt: <http://semweb.mmlab.be/ns/rml-target#> .
+@prefix formats: <http://www.w3.org/ns/formats/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix tree: <https://w3id.org/tree#> .
+@prefix ldes: <https://w3id.org/ldes#> .
+@prefix purl: <http://purl.org/dc/terms/> .
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+@prefix htv: <http://www.w3.org/2011/http#> .
+@prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
+@prefix om: <http://www.w3.org/ns/sosa/om#> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+@base <http://example.com/base/> .
+
+<#TargetWeather> a rmlt:LogicalTarget, ldes:EventStreamTarget;
+  rmlt:target [ a void:Dataset;
+    void:dataDump <file://./weather-ldes.nt>;
+  ];
+  rmlt:serialization formats:N-Triples;
+  ldes:baseIRI <https://pieter.pm/RML-LDES-prototype/weather.nt>;
+  ldes:timestampPath purl:created;
+  ldes:versionOfPath purl:isVersionOf;
+  tree:shape <https://pieter.pm/RML-LDES-prototype/shape.shacl>;
+.
+
+<#TriplesMapSensor>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/sensor/{code}" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class ssn:System;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+
+  rr:predicateObjectMap [
+    rr:predicate ssn:hasSubSystem;
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#TemperatureSensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ssn:hasSubSystem;
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#HumiditySensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ssn:hasSubSystem;
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#PressureSensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ssn:hasSubSystem;
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#PrecipitationSensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ssn:hasSubSystem;
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#WindSpeedSensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ssn:hasSubSystem;
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#WindDirectionSensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+.
+
+
+<#TriplesMapTemperatureSensor>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/sensor/{code}#TemperatureSensor" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class ssn:System;
+    rr:class sosa:Sensor;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+.
+
+<#TriplesMapHumiditySensor>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/sensor/{code}#HumiditySensor" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class ssn:System;
+    rr:class sosa:Sensor;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+.
+
+<#TriplesMapPressureSensor>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/sensor/{code}#PressureSensor" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class ssn:System;
+    rr:class sosa:Sensor;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+.
+
+<#TriplesMapPrecipitationSensor>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/sensor/{code}#PrecipitationSensor" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class ssn:System;
+    rr:class sosa:Sensor;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+.
+
+<#TriplesMapWindSpeedSensor>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/sensor/{code}#WindSpeedSensor" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class ssn:System;
+    rr:class sosa:Sensor;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+.
+
+<#TriplesMapWindDirectionSensor>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/sensor/{code}#WindDirectionSensor" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class ssn:System;
+    rr:class sosa:Sensor;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+.
+
+<#TriplesMapTemperatureResult>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#TemperatureResult" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class om:Measure;
+    rml:logicalTarget <#TargetWeather>;
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasUnit; 
+    rr:objectMap [
+      rr:constant om:degreeCelsius;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasNumericalValue; 
+    rr:objectMap [
+      rml:reference "air_temperature";
+      rr:datatype xsd:integer;
+    ]
+  ];
+.
+
+<#TriplesMapTemperatureObservation>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#Temperature" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class sosa:Observation;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:madeBySensor; 
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#TemperatureSensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:hasResult;
+    rr:objectMap [
+      rr:template "https://meteo.be/observation/{FID}#TemperatureResult";
+      rr:termType rr:IRI;
+    ]
+  ];
+.
+
+<#TriplesMapHumidityResult>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#HumidityResult" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class om:Measure;
+    rml:logicalTarget <#TargetWeather>;
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasUnit; 
+    rr:objectMap [
+      rr:constant om:humidity;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasNumericalValue; 
+    rr:objectMap [
+      rml:reference "relative_humidity";
+      rr:datatype xsd:integer;
+    ]
+  ];
+.
+
+<#TriplesMapHumidityObservation>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#Humidity" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class sosa:Observation;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:madeBySensor; 
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#HumiditySensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:hasResult;
+    rr:objectMap [
+      rr:template "https://meteo.be/observation/{FID}#HumidityResult";
+      rr:termType rr:IRI;
+    ]
+  ];
+.
+
+<#TriplesMapPressureResult>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#PressureResult" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class om:Measure;
+    rml:logicalTarget <#TargetWeather>;
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasUnit; 
+    rr:objectMap [
+      rr:constant om:hectoPascal;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasNumericalValue; 
+    rr:objectMap [
+      rml:reference "air_pressure";
+      rr:datatype xsd:integer;
+    ]
+  ];
+.
+
+<#TriplesMapPressureObservation>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#Pressure" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class sosa:Observation;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:madeBySensor; 
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#PressureSensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:hasResult;
+    rr:objectMap [
+      rr:template "https://meteo.be/observation/{FID}#PressureResult";
+      rr:termType rr:IRI;
+    ]
+  ];
+.
+
+<#TriplesMapPrecipitationResult>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#PrecipitationResult" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class om:Measure;
+    rml:logicalTarget <#TargetWeather>;
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasUnit; 
+    rr:objectMap [
+      rr:constant om:millimeter;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasNumericalValue; 
+    rr:objectMap [
+      rml:reference "precipitation";
+      rr:datatype xsd:integer;
+    ]
+  ];
+.
+
+<#TriplesMapPrecipitationObservation>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#Precipitation" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class sosa:Observation;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:madeBySensor; 
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#PrecipitationSensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:hasResult;
+    rr:objectMap [
+      rr:template "https://meteo.be/observation/{FID}#PrecipitationResult";
+      rr:termType rr:IRI;
+    ]
+  ];
+.
+
+<#TriplesMapWindSpeedResult>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#WindSpeedResult" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class om:Measure;
+    rml:logicalTarget <#TargetWeather>;
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasUnit; 
+    rr:objectMap [
+      rr:constant om:Beaufort;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasNumericalValue; 
+    rr:objectMap [
+      rml:reference "wind_speed";
+      rr:datatype xsd:integer;
+    ]
+  ];
+.
+
+<#TriplesMapWindSpeedObservation>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#WindSpeed" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class sosa:Observation;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:madeBySensor; 
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#WindSpeedSensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:hasResult;
+    rr:objectMap [
+      rr:template "https://meteo.be/observation/{FID}#WindSpeedResult";
+      rr:termType rr:IRI;
+    ]
+  ];
+.
+
+<#TriplesMapWindDirectionResult>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#WindDirectionResult" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class om:Measure;
+    rml:logicalTarget <#TargetWeather>;
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasUnit; 
+    rr:objectMap [
+      rr:constant om:degrees;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate om:hasNumericalValue; 
+    rr:objectMap [
+      rml:reference "wind_direction";
+      rr:datatype xsd:float;
+    ]
+  ];
+.
+
+<#TriplesMapWindDirectionObservation>
+  a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source [ a csvw:Table;
+      csvw:url "../../data/KMI/AWS_10min_20220201_11:00:00_20220218_11:00:00.csv";
+      csvw:dialect [ 
+        a csvw:Dialect;
+        csvw:trim "true"^^xsd:boolean; 
+      ];
+    ];
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://meteo.be/observation/{FID}#WindDirection" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:class sosa:Observation;
+    rml:logicalTarget <#TargetWeather>;
+  ]; 
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:madeBySensor; 
+    rr:objectMap [
+      rr:template "https://meteo.be/sensor/{code}#WindDirectionSensor";
+      rr:termType rr:IRI;
+    ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate sosa:hasResult;
+    rr:objectMap [
+      rr:template "https://meteo.be/observation/{FID}#WindDirectionResult";
+      rr:termType rr:IRI;
+    ]
+  ];
+.
