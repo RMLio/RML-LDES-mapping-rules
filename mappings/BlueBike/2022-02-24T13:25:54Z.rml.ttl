@@ -1,0 +1,139 @@
+# 
+# RML mapping rules for https://datapiloten.be/bluebike/availabilities.geojson
+# (c) Dylan Van Assche (2021)
+# IDLab - Ghent University - imec
+#
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix ex: <http://example.com/> .
+@prefix rdfs: <https://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rmlt: <http://semweb.mmlab.be/ns/rml-target#> .
+@prefix comp: <http://semweb.mmlab.be/ns/rml-compression#> .
+@prefix formats: <http://www.w3.org/ns/formats/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix tree: <https://w3id.org/tree#> .
+@prefix ldes: <https://w3id.org/ldes#> .
+@prefix purl: <http://purl.org/dc/terms/> .
+@prefix td: <https://www.w3.org/2019/wot/td#> .
+@prefix htv: <http://www.w3.org/2011/http#> .
+@prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
+@prefix gbfs: <https://w3id.org/gbfs#> .
+@base <http://example.com/rules/> .
+
+<#TargetDump> a rmlt:LogicalTarget, ldes:EventStreamTarget;
+  rmlt:target [ a void:Dataset;
+    void:dataDump <file://./2022-02-24T13:25:54Z.nt>;
+  ];
+  rmlt:serialization formats:N-Triples;
+  ldes:baseIRI <https://pieter.pm/RML-LDES-prototype/stations.nt>;
+  ldes:timestampPath purl:created;
+  ldes:versionOfPath purl:isVersionOf;
+  tree:shape <https://pieter.pm/RML-LDES-prototype/shape.shacl>;
+.
+
+<#WoTWebResource> a td:PropertyAffordance;
+  td:hasForm [
+    # URL and content type
+    hctl:hasTarget "http://localhost:8000/2022-02-24T13:25:54Z.json";
+    hctl:forContentType "application/json";
+    # Read only
+    hctl:hasOperationType td:readproperty ;
+    # Set HTTP method and headers
+    htv:methodName "GET";
+    htv:headers ([
+      htv:fieldName "User-Agent";
+      htv:fieldValue "IDLab - Ghent University - imec (RMLMapper)";
+    ]);
+  ];
+.
+
+<#WoTWebAPI> a td:Thing;
+  td:hasPropertyAffordance <#WoTWebResource>;
+.
+
+<#StationsTriplesMap> a rr:TriplesMap;
+  rml:logicalSource [ 
+    rml:source <#WoTWebResource>;
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]" ;
+  ];
+
+  # Unique IRI generation: $id#$last_seen
+  rr:subjectMap [ 
+    fnml:functionValue [
+      rr:predicateObjectMap [
+        rr:predicate fno:executes ;
+        rr:objectMap [ rr:constant idlab-fn:generateUniqueIRI ] ] ;
+        # IRI template
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:iri ;
+          rr:objectMap [ rr:template "https://blue-bike.be/stations/{id}#{last_seen}" ]
+        ];
+        # Flag to indicate if the properties are unique on their own
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:unique ;
+          rr:objectMap [ rr:constant "true"; rr:termType xsd:boolean; ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:watchedProperty ;
+          rr:objectMap [ rr:constant ""; ]
+        ];
+        # Directory path where the state for this function is/will be stored
+        rr:predicateObjectMap [
+          rr:predicate idlab-fn:state ;
+          rr:objectMap [ rr:constant "./ldes-state-file"; rr:termType xsd:string; ]
+        ];
+    ];
+    rr:termType rr:IRI;
+    rr:class gbfs:Station;
+    rml:logicalTarget <#TargetDump>;
+  ];
+
+  # BlueBike station: name
+  rr:predicateObjectMap [ 
+    rr:predicate schema:name ; 
+    rr:objectMap [ rml:reference "name"; rr:datatype xsd:string; ]
+  ];
+
+  # BlueBike station: available bicycles
+  rr:predicateObjectMap [ 
+    rr:predicate gbfs:bikes_available ; 
+    rr:objectMap [ rml:reference "bikes_available"; rr:datatype xsd:integer; ]
+  ];
+
+  # BlueBike station: maximum capacity
+  rr:predicateObjectMap [ 
+    rr:predicate gbfs:bikes_in_use ; 
+    rr:objectMap [ rml:reference "bikes_in_use"; rr:datatype xsd:integer; ]
+  ];
+
+  # Geo location
+  rr:predicateObjectMap [ 
+    rr:predicate geo:latitude ; 
+    rr:objectMap [ rml:reference "latitude"; rr:datatype xsd:float; ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate geo:longitude ; 
+    rr:objectMap [ rml:reference "longitude"; rr:datatype xsd:float; ]
+  ];
+
+  # Versioning
+  rr:predicateObjectMap [
+    rr:predicate dcterms:created ;
+    rr:objectMap [ rml:reference "last_seen"; rr:datatype xsd:dateTime; ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dcterms:isVersionOf ;
+    rr:objectMap [ rr:template "https://blue-bike.be/stations/{id}"; rr:termType rr:IRI; ]
+  ];
+.

@@ -15,14 +15,35 @@ and the number of generated triples.
 
 ## Reproduce
 
+### BlueBike use case
+1. Enter the `mappings/BlueBike` directory.
+2. Execute `run.sh` in the directory.
+
+### NMBS/SNCB and KMI use cases
+
 1. Enter the `mappings/$USE_CASE` directory.
-`$USE_CASE` is either `BlueBike`, `SNCB`, or `KMI`.
+`$USE_CASE` is either `SNCB`, or `KMI`.
 2. Enter the directory marked with `YYYYMMDD` timestamp,
 the first one chronological. Example: `20220221` for SNCB.
-3. Execute `run.sh` in the directory
+3. Execute `run.sh` in the directory.
 4. Go up and enter the next directory in chronological order
 with the `YYYYMMDD` timestamp.
 Repeat the steps until you executed them all.
+
+Note: To workaround GitHub's file limits, we had to compress the output of
+the resulted triples in the SNCB use case and the RMLMapper jar.
+You can undo this operation by running in each directory
+with `YYYYMMDD` timestamp:
+
+```
+tar -xzvf output.tar.gz
+```
+
+And the following in this directory to get the RMLMapper jar:
+
+```
+tar -xzvf rmlmapper-5.0.0-r364-all.jar.tar.gz
+```
 
 ## Preliminary results
 
