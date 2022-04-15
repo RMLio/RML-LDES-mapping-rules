@@ -9,8 +9,8 @@ Mapping rules for the RML+LDES paper at the Knowledge Graph Construction Worksho
 - [PRELIMINARY_RESULTS.md](./PRELIMINARY_RESULTS.md)
 lists our preliminary results and how to reproduce them.
 - [README.md](./README.md) this README file.
-- [rmlmapper-5.0.0-r364-all.jar](./rmlmapper-5.0.0-r364-all.jar)
-the Java jar of the RMLMapper used in this setup.
+- [rmlmapper-5.0.0-r364-all.jar.tar.gz](./rmlmapper-5.0.0-r364-all.jar.tar.gz)
+the Java jar of the RMLMapper used in this setup. Must be untarred first!
 
 ```
 .
@@ -195,32 +195,20 @@ the Java jar of the RMLMapper used in this setup.
 │   │       └── weather-ldes.nt
 │   └── SNCB
 │       ├── 20220221
-│       │   ├── agency.nt
 │       │   ├── logs.txt
 │       │   ├── mapping.rml.ttl
-│       │   ├── routes.nt
-│       │   ├── run.sh
-│       │   ├── stops.nt
-│       │   ├── stoptimes.nt
-│       │   └── trips.nt
+│       │   ├── output.tar.gz
+│       │   └── run.sh
 │       ├── 20220223
-│       │   ├── agency.nt
 │       │   ├── logs.txt
 │       │   ├── mapping.rml.ttl
-│       │   ├── routes.nt
-│       │   ├── run.sh
-│       │   ├── stops.nt
-│       │   ├── stoptimes.nt
-│       │   └── trips.nt
+│       │   ├── output.tar.gz
+│       │   └── run.sh
 │       ├── 20220224
-│       │   ├── agency.nt
 │       │   ├── logs.txt
 │       │   ├── mapping.rml.ttl
-│       │   ├── routes.nt
-│       │   ├── run.sh
-│       │   ├── stops.nt
-│       │   ├── stoptimes.nt
-│       │   └── trips.nt
+│       │   ├── output.tar.gz
+│       │   └── run.sh
 │       └── 20220230
 │           ├── agency.nt
 │           ├── logs.txt
@@ -232,7 +220,7 @@ the Java jar of the RMLMapper used in this setup.
 │           └── trips.nt
 ├── PRELIMINARY_RESULTS.md
 ├── README.md
-└── rmlmapper-5.0.0-r364-all.jar
+└── rmlmapper-5.0.0-r364-all.jar.tar.gz
 ```
 
 ## License
