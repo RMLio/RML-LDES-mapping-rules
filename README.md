@@ -4,7 +4,7 @@ Mapping rules for the RML+LDES paper at the Knowledge Graph Construction Worksho
 
 ## Structure
 
-- [data](./data) contains the raw wdata for the use cases.
+- [data](./data) contains the raw data for the use cases.
 - [mappings](./mappings) contains the mappings and their execution logs.
 - [PRELIMINARY_RESULTS.md](./PRELIMINARY_RESULTS.md)
 lists our preliminary results and how to reproduce them.
