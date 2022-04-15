@@ -1,0 +1,179 @@
+<https://blue-bike.be/stations/110#2022-02-24T14%3A34%3A55> <http://purl.org/dc/terms/created> "2022-02-24T14:34:55"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/110#2022-02-24T14%3A34%3A55> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/110> .
+<https://blue-bike.be/stations/110#2022-02-24T14%3A34%3A55> <http://schema.org/name> "P&R Boechout-Capenberg" .
+<https://blue-bike.be/stations/110#2022-02-24T14%3A34%3A55> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/110#2022-02-24T14%3A34%3A55> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "51.168722000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/110#2022-02-24T14%3A34%3A55> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.493528000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/110#2022-02-24T14%3A34%3A55> <https://w3id.org/gbfs#bikes_available> "4"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/110#2022-02-24T14%3A34%3A55> <https://w3id.org/gbfs#bikes_in_use> "0"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/119#2022-02-24T14%3A35%3A15> <http://purl.org/dc/terms/created> "2022-02-24T14:35:15"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/119#2022-02-24T14%3A35%3A15> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/119> .
+<https://blue-bike.be/stations/119#2022-02-24T14%3A35%3A15> <http://schema.org/name> "Parking Waregem-Expo" .
+<https://blue-bike.be/stations/119#2022-02-24T14%3A35%3A15> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/119#2022-02-24T14%3A35%3A15> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "50.881722000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/119#2022-02-24T14%3A35%3A15> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "3.427361000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/119#2022-02-24T14%3A35%3A15> <https://w3id.org/gbfs#bikes_available> "5"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/119#2022-02-24T14%3A35%3A15> <https://w3id.org/gbfs#bikes_in_use> "0"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/125#2022-02-24T14%3A35%3A36> <http://purl.org/dc/terms/created> "2022-02-24T14:35:36"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/125#2022-02-24T14%3A35%3A36> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/125> .
+<https://blue-bike.be/stations/125#2022-02-24T14%3A35%3A36> <http://schema.org/name> "Station Heide" .
+<https://blue-bike.be/stations/125#2022-02-24T14%3A35%3A36> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/125#2022-02-24T14%3A35%3A36> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "51.365056000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/125#2022-02-24T14%3A35%3A36> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.460556000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/125#2022-02-24T14%3A35%3A36> <https://w3id.org/gbfs#bikes_available> "9"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/125#2022-02-24T14%3A35%3A36> <https://w3id.org/gbfs#bikes_in_use> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/128#2022-02-24T14%3A35%3A50> <http://purl.org/dc/terms/created> "2022-02-24T14:35:50"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/128#2022-02-24T14%3A35%3A50> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/128> .
+<https://blue-bike.be/stations/128#2022-02-24T14%3A35%3A50> <http://schema.org/name> "Station Tielt" .
+<https://blue-bike.be/stations/128#2022-02-24T14%3A35%3A50> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/128#2022-02-24T14%3A35%3A50> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "50.990612000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/128#2022-02-24T14%3A35%3A50> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "3.329817000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/128#2022-02-24T14%3A35%3A50> <https://w3id.org/gbfs#bikes_available> "6"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/128#2022-02-24T14%3A35%3A50> <https://w3id.org/gbfs#bikes_in_use> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/130#2022-02-24T14%3A35%3A47> <http://purl.org/dc/terms/created> "2022-02-24T14:35:47"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/130#2022-02-24T14%3A35%3A47> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/130> .
+<https://blue-bike.be/stations/130#2022-02-24T14%3A35%3A47> <http://schema.org/name> "Station Antwerpen-Zuid" .
+<https://blue-bike.be/stations/130#2022-02-24T14%3A35%3A47> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/130#2022-02-24T14%3A35%3A47> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "51.197956000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/130#2022-02-24T14%3A35%3A47> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.390815000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/130#2022-02-24T14%3A35%3A47> <https://w3id.org/gbfs#bikes_available> "9"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/130#2022-02-24T14%3A35%3A47> <https://w3id.org/gbfs#bikes_in_use> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/136#2022-02-24T14%3A35%3A03> <http://purl.org/dc/terms/created> "2022-02-24T14:35:03"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/136#2022-02-24T14%3A35%3A03> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/136> .
+<https://blue-bike.be/stations/136#2022-02-24T14%3A35%3A03> <http://schema.org/name> "Station Beveren-Waas" .
+<https://blue-bike.be/stations/136#2022-02-24T14%3A35%3A03> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/136#2022-02-24T14%3A35%3A03> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "51.208483000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/136#2022-02-24T14%3A35%3A03> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.260263000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/136#2022-02-24T14%3A35%3A03> <https://w3id.org/gbfs#bikes_available> "5"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/136#2022-02-24T14%3A35%3A03> <https://w3id.org/gbfs#bikes_in_use> "5"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/139#2022-02-24T14%3A35%3A04> <http://purl.org/dc/terms/created> "2022-02-24T14:35:04"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/139#2022-02-24T14%3A35%3A04> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/139> .
+<https://blue-bike.be/stations/139#2022-02-24T14%3A35%3A04> <http://schema.org/name> "Station Gavere-Asper" .
+<https://blue-bike.be/stations/139#2022-02-24T14%3A35%3A04> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/139#2022-02-24T14%3A35%3A04> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "50.929443000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/139#2022-02-24T14%3A35%3A04> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "3.640126000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/139#2022-02-24T14%3A35%3A04> <https://w3id.org/gbfs#bikes_available> "5"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/139#2022-02-24T14%3A35%3A04> <https://w3id.org/gbfs#bikes_in_use> "0"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/176#2022-02-24T14%3A35%3A07> <http://purl.org/dc/terms/created> "2022-02-24T14:35:07"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/176#2022-02-24T14%3A35%3A07> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/176> .
+<https://blue-bike.be/stations/176#2022-02-24T14%3A35%3A07> <http://schema.org/name> "Station Drongen" .
+<https://blue-bike.be/stations/176#2022-02-24T14%3A35%3A07> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/176#2022-02-24T14%3A35%3A07> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "51.047438000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/176#2022-02-24T14%3A35%3A07> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "3.654975000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/176#2022-02-24T14%3A35%3A07> <https://w3id.org/gbfs#bikes_available> "8"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/176#2022-02-24T14%3A35%3A07> <https://w3id.org/gbfs#bikes_in_use> "0"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/51#2022-02-24T14%3A34%3A59> <http://purl.org/dc/terms/created> "2022-02-24T14:34:59"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/51#2022-02-24T14%3A34%3A59> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/51> .
+<https://blue-bike.be/stations/51#2022-02-24T14%3A34%3A59> <http://schema.org/name> "Station Aarschot" .
+<https://blue-bike.be/stations/51#2022-02-24T14%3A34%3A59> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/51#2022-02-24T14%3A34%3A59> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "50.983778000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/51#2022-02-24T14%3A34%3A59> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.823778000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/51#2022-02-24T14%3A34%3A59> <https://w3id.org/gbfs#bikes_available> "8"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/51#2022-02-24T14%3A34%3A59> <https://w3id.org/gbfs#bikes_in_use> "8"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/52#2022-02-24T14%3A35%3A43> <http://purl.org/dc/terms/created> "2022-02-24T14:35:43"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/52#2022-02-24T14%3A35%3A43> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/52> .
+<https://blue-bike.be/stations/52#2022-02-24T14%3A35%3A43> <http://schema.org/name> "Station Sint-Truiden" .
+<https://blue-bike.be/stations/52#2022-02-24T14%3A35%3A43> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/52#2022-02-24T14%3A35%3A43> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "50.817222000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/52#2022-02-24T14%3A35%3A43> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "5.176167000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/52#2022-02-24T14%3A35%3A43> <https://w3id.org/gbfs#bikes_available> "9"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/52#2022-02-24T14%3A35%3A43> <https://w3id.org/gbfs#bikes_in_use> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/55#2022-02-24T14%3A35%3A38> <http://purl.org/dc/terms/created> "2022-02-24T14:35:38"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/55#2022-02-24T14%3A35%3A38> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/55> .
+<https://blue-bike.be/stations/55#2022-02-24T14%3A35%3A38> <http://schema.org/name> "Brussel Noord/Bruxelles Nord" .
+<https://blue-bike.be/stations/55#2022-02-24T14%3A35%3A38> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/55#2022-02-24T14%3A35%3A38> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "50.861514000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/55#2022-02-24T14%3A35%3A38> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.361356000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/55#2022-02-24T14%3A35%3A38> <https://w3id.org/gbfs#bikes_available> "24"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/55#2022-02-24T14%3A35%3A38> <https://w3id.org/gbfs#bikes_in_use> "4"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/59#2022-02-24T14%3A35%3A16> <http://purl.org/dc/terms/created> "2022-02-24T14:35:16"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/59#2022-02-24T14%3A35%3A16> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/59> .
+<https://blue-bike.be/stations/59#2022-02-24T14%3A35%3A16> <http://schema.org/name> "Gare de Namur" .
+<https://blue-bike.be/stations/59#2022-02-24T14%3A35%3A16> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/59#2022-02-24T14%3A35%3A16> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "50.468556000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/59#2022-02-24T14%3A35%3A16> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.861944000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/59#2022-02-24T14%3A35%3A16> <https://w3id.org/gbfs#bikes_available> "6"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/59#2022-02-24T14%3A35%3A16> <https://w3id.org/gbfs#bikes_in_use> "0"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/66#2022-02-24T14%3A35%3A43> <http://purl.org/dc/terms/created> "2022-02-24T14:35:43"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/66#2022-02-24T14%3A35%3A43> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/66> .
+<https://blue-bike.be/stations/66#2022-02-24T14%3A35%3A43> <http://schema.org/name> "Station Torhout" .
+<https://blue-bike.be/stations/66#2022-02-24T14%3A35%3A43> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/66#2022-02-24T14%3A35%3A43> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "51.065083000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/66#2022-02-24T14%3A35%3A43> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "3.105611000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/66#2022-02-24T14%3A35%3A43> <https://w3id.org/gbfs#bikes_available> "8"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/66#2022-02-24T14%3A35%3A43> <https://w3id.org/gbfs#bikes_in_use> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/73#2022-02-24T14%3A35%3A25> <http://purl.org/dc/terms/created> "2022-02-24T14:35:25"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/73#2022-02-24T14%3A35%3A25> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/73> .
+<https://blue-bike.be/stations/73#2022-02-24T14%3A35%3A25> <http://schema.org/name> "Station Gent-St. P. (St.-Denijslaan)" .
+<https://blue-bike.be/stations/73#2022-02-24T14%3A35%3A25> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/73#2022-02-24T14%3A35%3A25> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "51.034889000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/73#2022-02-24T14%3A35%3A25> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "3.709667000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/73#2022-02-24T14%3A35%3A25> <https://w3id.org/gbfs#bikes_available> "20"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/73#2022-02-24T14%3A35%3A25> <https://w3id.org/gbfs#bikes_in_use> "40"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/76#2022-02-24T14%3A35%3A03> <http://purl.org/dc/terms/created> "2022-02-24T14:35:03"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/76#2022-02-24T14%3A35%3A03> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/76> .
+<https://blue-bike.be/stations/76#2022-02-24T14%3A35%3A03> <http://schema.org/name> "Station Antwerpen-Berchem" .
+<https://blue-bike.be/stations/76#2022-02-24T14%3A35%3A03> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/76#2022-02-24T14%3A35%3A03> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "51.199503000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/76#2022-02-24T14%3A35%3A03> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.431682000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/76#2022-02-24T14%3A35%3A03> <https://w3id.org/gbfs#bikes_available> "31"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/76#2022-02-24T14%3A35%3A03> <https://w3id.org/gbfs#bikes_in_use> "29"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/79#2022-02-24T14%3A35%3A54> <http://purl.org/dc/terms/created> "2022-02-24T14:35:54"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/79#2022-02-24T14%3A35%3A54> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/79> .
+<https://blue-bike.be/stations/79#2022-02-24T14%3A35%3A54> <http://schema.org/name> "Station Herentals" .
+<https://blue-bike.be/stations/79#2022-02-24T14%3A35%3A54> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/79#2022-02-24T14%3A35%3A54> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "51.181139000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/79#2022-02-24T14%3A35%3A54> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.829278000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/79#2022-02-24T14%3A35%3A54> <https://w3id.org/gbfs#bikes_available> "15"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/79#2022-02-24T14%3A35%3A54> <https://w3id.org/gbfs#bikes_in_use> "12"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/81#2022-02-24T14%3A35%3A05> <http://purl.org/dc/terms/created> "2022-02-24T14:35:05"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/81#2022-02-24T14%3A35%3A05> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/81> .
+<https://blue-bike.be/stations/81#2022-02-24T14%3A35%3A05> <http://schema.org/name> "Station Aalst" .
+<https://blue-bike.be/stations/81#2022-02-24T14%3A35%3A05> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/81#2022-02-24T14%3A35%3A05> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "50.942944000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/81#2022-02-24T14%3A35%3A05> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.038623000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/81#2022-02-24T14%3A35%3A05> <https://w3id.org/gbfs#bikes_available> "6"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/81#2022-02-24T14%3A35%3A05> <https://w3id.org/gbfs#bikes_in_use> "4"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/89#2022-02-24T14%3A35%3A47> <http://purl.org/dc/terms/created> "2022-02-24T14:35:47"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/89#2022-02-24T14%3A35%3A47> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/89> .
+<https://blue-bike.be/stations/89#2022-02-24T14%3A35%3A47> <http://schema.org/name> "Station Dendermonde" .
+<https://blue-bike.be/stations/89#2022-02-24T14%3A35%3A47> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/89#2022-02-24T14%3A35%3A47> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "51.023444000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/89#2022-02-24T14%3A35%3A47> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.101778000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/89#2022-02-24T14%3A35%3A47> <https://w3id.org/gbfs#bikes_available> "17"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/89#2022-02-24T14%3A35%3A47> <https://w3id.org/gbfs#bikes_in_use> "10"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/91#2022-02-24T14%3A35%3A04> <http://purl.org/dc/terms/created> "2022-02-24T14:35:04"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<https://blue-bike.be/stations/91#2022-02-24T14%3A35%3A04> <http://purl.org/dc/terms/isVersionOf> <https://blue-bike.be/stations/91> .
+<https://blue-bike.be/stations/91#2022-02-24T14%3A35%3A04> <http://schema.org/name> "Station Asse" .
+<https://blue-bike.be/stations/91#2022-02-24T14%3A35%3A04> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/gbfs#Station> .
+<https://blue-bike.be/stations/91#2022-02-24T14%3A35%3A04> <http://www.w3.org/2003/01/geo/wgs84_pos#latitude> "50.906306000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/91#2022-02-24T14%3A35%3A04> <http://www.w3.org/2003/01/geo/wgs84_pos#longitude> "4.207806000000"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://blue-bike.be/stations/91#2022-02-24T14%3A35%3A04> <https://w3id.org/gbfs#bikes_available> "6"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://blue-bike.be/stations/91#2022-02-24T14%3A35%3A04> <https://w3id.org/gbfs#bikes_in_use> "5"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt> <https://w3id.org/ldes#retentionPolicy> <https://pieter.pm/RML-LDES-prototype/stations.nt#retention> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ldes#EventStream> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/110#2022-02-24T14%3A34%3A55> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/119#2022-02-24T14%3A35%3A15> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/125#2022-02-24T14%3A35%3A36> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/128#2022-02-24T14%3A35%3A50> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/130#2022-02-24T14%3A35%3A47> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/136#2022-02-24T14%3A35%3A03> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/139#2022-02-24T14%3A35%3A04> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/176#2022-02-24T14%3A35%3A07> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/51#2022-02-24T14%3A34%3A59> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/52#2022-02-24T14%3A35%3A43> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/55#2022-02-24T14%3A35%3A38> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/59#2022-02-24T14%3A35%3A16> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/66#2022-02-24T14%3A35%3A43> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/73#2022-02-24T14%3A35%3A25> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/76#2022-02-24T14%3A35%3A03> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/79#2022-02-24T14%3A35%3A54> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/81#2022-02-24T14%3A35%3A05> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/89#2022-02-24T14%3A35%3A47> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#member> <https://blue-bike.be/stations/91#2022-02-24T14%3A35%3A04> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#shape> <https://pieter.pm/RML-LDES-prototype/shape.shacl> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#eventstream> <https://w3id.org/tree#view> <https://pieter.pm/RML-LDES-prototype/stations.nt> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#retention> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ldes#LatestVersionSubject> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#retention> <https://w3id.org/ldes#amount> "1" .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#retention> <https://w3id.org/ldes#timestampPath> <http://purl.org/dc/terms/created> .
+<https://pieter.pm/RML-LDES-prototype/stations.nt#retention> <https://w3id.org/ldes#versionOfPath> <http://purl.org/dc/terms/isVersionOf> .
